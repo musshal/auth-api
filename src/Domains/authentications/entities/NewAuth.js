@@ -1,22 +1,22 @@
-class Authentication {
+class NewAuth {
   constructor(payload) {
     this._verifyPayload(payload);
 
-    const { accessToken, refreshToken } = payload;
-
-    this.accessToken = accessToken;
-    this.refreshToken = refreshToken;
+    this.accessToken = payload.accessToken;
+    this.refreshToken = payload.refreshToken;
   }
 
-  _verifyPayload({ accessToken, refreshToken }) {
+  _verifyPayload(payload) {
+    const { accessToken, refreshToken } = payload;
+
     if (!accessToken || !refreshToken) {
-      throw new Error('AUTHENTICATION.NOT_CONTAIN_NEEDED_PROPERTY');
+      throw new Error('NEW_AUTH.NOT_CONTAIN_NEEDED_PROPERTY');
     }
 
     if (typeof accessToken !== 'string' || typeof refreshToken !== 'string') {
-      throw new Error('AUTHENTICATION.NOT_MEET_DATA_TYPE_SPESIFICATION');
+      throw new Error('NEW_AUTH.NOT_MEET_DATA_TYPE_SPECIFICATION');
     }
   }
 }
 
-module.exports = Authentication;
+module.exports = NewAuth;
