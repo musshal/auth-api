@@ -1,4 +1,4 @@
-const Authentication = require('../Authentication');
+const NewAuth = require('../NewAuth');
 
 describe('NewAuth entities', () => {
   it('should throw error when payload did not contain needed property', () => {
@@ -8,8 +8,8 @@ describe('NewAuth entities', () => {
     };
 
     // Action and Assert
-    expect(() => new Authentication(payload)).toThrowError(
-      'AUTHENTICATION.NOT_CONTAIN_NEEDED_PROPERTY',
+    expect(() => new NewAuth(payload)).toThrowError(
+      'NEW_AUTH.NOT_CONTAIN_NEEDED_PROPERTY',
     );
   });
 
@@ -21,8 +21,8 @@ describe('NewAuth entities', () => {
     };
 
     // Action and Assert
-    expect(() => new Authentication(payload)).toThrowError(
-      'AUTHENTICATION.NOT_MEET_DATA_TYPE_SPESIFICATION',
+    expect(() => new NewAuth(payload)).toThrowError(
+      'NEW_AUTH.NOT_MEET_DATA_TYPE_SPESIFICATION',
     );
   });
 
@@ -34,11 +34,11 @@ describe('NewAuth entities', () => {
     };
 
     // Action
-    const authentication = new Authentication(payload);
+    const newAuth = new NewAuth(payload);
 
     // Assert
-    expect(authentication).toBeInstanceOf(Authentication);
-    expect(authentication.accessToken).toEqual(payload.accessToken);
-    expect(authentication.refreshToken).toEqual(payload.refreshToken);
+    expect(newAuth).toBeInstanceOf(NewAuth);
+    expect(newAuth.accessToken).toEqual(payload.accessToken);
+    expect(newAuth.refreshToken).toEqual(payload.refreshToken);
   });
 });
